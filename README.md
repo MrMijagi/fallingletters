@@ -12,14 +12,17 @@ Falling Letters is a small *project* - a ~~simple~~ **game** in which you click 
 1 line break.
 
 1. Lets start a list
+  Paragraph with __nothing__ in it.
 2. And add few sub-lists
   * Unordered list
   * ~~Apparently~~
 3. Another element
   2. Does this work?
-  3. Lets _see_
-5. Oops where is 4.
+  3. I think _not_
+5. Oops there is no sub-list
 
 [A reference link :)][1]
 
-[1]: www.google.com
+[What about this link](www.google.com)
+
+[1]: https://www.google.com
