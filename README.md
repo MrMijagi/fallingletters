@@ -26,3 +26,10 @@ Falling Letters is a small *project* - a ~~simple~~ **game** in which you click 
 [What about this link](www.google.com)
 
 [1]: https://www.google.com
+
+#### Code
+
+```python
+s = "Python syntax highlighting"
+print s
+```
