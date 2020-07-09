@@ -33,3 +33,7 @@ Falling Letters is a small *project* - a ~~simple~~ **game** in which you click 
 s = "Python syntax highlighting"
 print s
 ```
+###### And blockquotes
+
+> How do you call a careful wolf?
+> A-werewolf
