@@ -16,11 +16,9 @@ public class GameScreen implements Screen {
 	Rectangle imgRect;
 	
 	// Game logic variables
-	ArrayList<Character> allLetters;
-	ArrayList<Double> timesToPass;
-	ArrayList<Character> letters;
-	ArrayList<Rectangle> height;
-	int timeSinceLastLetter;
+	ArrayList<LetterMeta> lettersMeta;
+	ArrayList<Letter> letters;
+	long startTime;
 	
 	public GameScreen(final FallingLetters game) {
 		this.game = game;
@@ -32,10 +30,10 @@ public class GameScreen implements Screen {
 		imgRect = new Rectangle(0, 176, game.windowedWidth/10, game.windowedWidth/10);
 		
 		// Game logic
-		letters = new ArrayList<> ();
-		timesToPass = new ArrayList<> ();
-		//loadLetters();
-		timeSinceLastLetter = 0;
+		this.lettersMeta = new ArrayList<LetterMeta>();
+		loadLetters("letters.txt", lettersMeta);
+		this.letters = new ArrayList<Letter>();
+		this.startTime = System.nanoTime();
 	}
 	
 	@Override
@@ -58,13 +56,11 @@ public class GameScreen implements Screen {
 		game.batch.end();
 		
 		// Add new letter to list if enough time passed
-		//timeSinceLastLetter += delta;
-		//if (timeSinceLastLetter > timesToPass.get(0)) {
+		if (System.nanoTime() - this.startTime > lettersMeta.get(0).getTime()) {
 			
-		//}
+		}
 		
 		if (Gdx.input.isKeyPressed(Keys.LEFT)) {
-			System.out.println("TOOO");
 			imgRect.x -= delta * 50;
 		}
 		if (Gdx.input.isKeyPressed(Keys.RIGHT)) {
@@ -121,19 +117,16 @@ public class GameScreen implements Screen {
 		
 	}
 	
-	public void loadLetters() {
-		// loads letters with times at which should they appear
+	public void loadLetters(String filename, ArrayList<LetterMeta> array) {
+		// loads letters meta (key, time)
 		
-		FileHandle file = Gdx.files.internal("letters.txt");
+		FileHandle file = Gdx.files.internal(filename);
 		String string = file.readString();
-		double last = 0;
 		
 		String[] strings = string.split("\r\n");
 		for (String s: strings) {
 			String[] line = s.split("\t");
-			letters.add(line[0].charAt(0));
-			timesToPass.add(Double.parseDouble(line[1])-last);
-			last = Double.parseDouble(line[1]);
+			array.add(new LetterMeta(line[0].charAt(0), Long.parseLong(line[1])));
 		}
 	}
 
