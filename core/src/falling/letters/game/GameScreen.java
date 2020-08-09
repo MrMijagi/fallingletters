@@ -11,7 +11,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.graphics.GL20;
 
 public class GameScreen implements Screen {
-	final FallingLetters game;
+	final FallingLettersGame game;
 	OrthographicCamera camera;
 	Rectangle imgRect;
 	
@@ -20,7 +20,7 @@ public class GameScreen implements Screen {
 	ArrayList<Letter> letters;
 	long startTime;
 	
-	public GameScreen(final FallingLetters game) {
+	public GameScreen(final FallingLettersGame game) {
 		this.game = game;
 		
 		

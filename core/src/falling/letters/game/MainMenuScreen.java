@@ -8,17 +8,17 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 
 public class MainMenuScreen implements Screen {
 	
-	final FallingLetters game;
+	final FallingLettersGame game;
 	OrthographicCamera camera;
 	
-	public MainMenuScreen(final FallingLetters game, String errorMsg) {
+	public MainMenuScreen(final FallingLettersGame game, String errorMsg) {
 		this.game = game;
 		
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, game.windowedWidth, game.windowedHeight);
 	}
 	
-	public MainMenuScreen(final FallingLetters game) {this(game, "");}
+	public MainMenuScreen(final FallingLettersGame game) {this(game, "");}
 
 	@Override
 	public void show() {
